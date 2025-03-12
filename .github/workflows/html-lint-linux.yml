@@ -1,0 +1,21 @@
+name: Cek Kode HTML (Linux)
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest  # Menggunakan runner Linux
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install HTMLHint
+        run: npm install -g htmlhint
+
+      - name: Periksa HTML
+        run: htmlhint "**/*.html"
